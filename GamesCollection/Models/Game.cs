@@ -19,6 +19,6 @@ namespace GamesCollection.Models
         public Company Developer { get; set; }
         public Company Publisher { get; set; }
         public int DeveloperId { get; set; }
-        public int PublisherId { get; set; }
+        public int? PublisherId { get; set; }
     }
 }

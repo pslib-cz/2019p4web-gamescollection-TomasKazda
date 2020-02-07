@@ -287,7 +287,7 @@ namespace GamesCollection.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PublisherId")
+                    b.Property<int?>("PublisherId")
                         .HasColumnType("int");
 
                     b.Property<string>("Website")
@@ -596,23 +596,23 @@ namespace GamesCollection.Migrations
             modelBuilder.Entity("GamesCollection.Models.Company", b =>
                 {
                     b.HasOne("GamesCollection.Models.Company", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId");
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("GamesCollection.Models.Game", b =>
                 {
                     b.HasOne("GamesCollection.Models.Company", "Developer")
-                        .WithMany()
+                        .WithMany("DevelopedGames")
                         .HasForeignKey("DeveloperId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GamesCollection.Models.Company", "Publisher")
-                        .WithMany()
+                        .WithMany("ReleasedGames")
                         .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("GamesCollection.Models.GameGenre", b =>

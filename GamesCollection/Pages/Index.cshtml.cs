@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GamesCollection.Models;
+using GamesCollection.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,23 +14,21 @@ namespace GamesCollection.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-        private ApplicationDbContext _context;
+        private readonly GameCompanyService gs;
 
         public IList<Company> Companies { get; set; }
         public SelectList CountriesList { get; set; }
-        public IndexModel(ApplicationDbContext context, ILogger<IndexModel> logger)
+        public IndexModel(GameCompanyService gs)
         {
-            _logger = logger;
-            _context = context;
+            this.gs = gs;
         }
 
-        public async Task OnGet(string order, string search, string nameFilter, string countryFilter, int? ownerFilter = null)
+        public void OnGet(string order, string search, string nameFilter, string countryFilter, int? ownerFilter = null)
         {
             CountriesList = new SelectList(new List<string> { 
                 "CZ", "FR", "GE", "PL", "SE", "US"
             });
-            IQueryable<Company> companies = _context.Companies;
+            //IQueryable<Company> companies = _context.Companies;
             Companies = new List<Company>();
         }
     }

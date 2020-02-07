@@ -9,6 +9,20 @@
     <Compile Remove="Migrations\20200119183343_Init.Designer.cs" />
     <Compile Remove="Migrations\20200119184237_Init.cs" />
     <Compile Remove="Migrations\20200119184237_Init.Designer.cs" />
+    <Compile Remove="Migrations\20200119185616_Init.cs" />
+    <Compile Remove="Migrations\20200119185616_Init.Designer.cs" />
+    <Compile Remove="Migrations\20200206204821_AddingGames.cs" />
+    <Compile Remove="Migrations\20200206204821_AddingGames.Designer.cs" />
+    <Compile Remove="Migrations\20200207100603_GamesOneToMany.cs" />
+    <Compile Remove="Migrations\20200207100603_GamesOneToMany.Designer.cs" />
+    <Compile Remove="Migrations\20200207101551_GamesOneToMany.cs" />
+    <Compile Remove="Migrations\20200207101551_GamesOneToMany.Designer.cs" />
+    <Compile Remove="Migrations\20200207101759_FullDatabase.cs" />
+    <Compile Remove="Migrations\20200207101759_FullDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20200207102148_FullDatabase.cs" />
+    <Compile Remove="Migrations\20200207102148_FullDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20200207102323_FullDatabase.cs" />
+    <Compile Remove="Migrations\20200207102323_FullDatabase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

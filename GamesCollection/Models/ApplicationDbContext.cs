@@ -18,6 +18,27 @@ namespace GamesCollection.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<GameGenre>().HasKey(gg => new { gg.GameId, gg.GenreId });
+
+            modelBuilder.Entity<Company>()
+                .HasOne(c => c.Parent)
+                .WithMany(c => c.Children)
+                .HasForeignKey(c => c.ParentId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<Game>()
+                .HasOne(g => g.Developer)
+                .WithMany(c => c.DevelopedGames)
+                .HasForeignKey(g => g.DeveloperId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Game>()
+                .HasOne(g => g.Publisher)
+                .WithMany(c => c.ReleasedGames)
+                .HasForeignKey(g => g.PublisherId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Genre>().HasData(new Genre { Id = 1, Name = "Role-playing" });
             modelBuilder.Entity<Genre>().HasData(new Genre { Id = 2, Name = "Adventure" });
             modelBuilder.Entity<Genre>().HasData(new Genre { Id = 3, Name = "Shooter" });
