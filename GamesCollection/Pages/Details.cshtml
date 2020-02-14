@@ -7,17 +7,31 @@
 <h1>Company</h1>
 <dl>
     <dt>Name</dt>
-    <dd></dd>
+    <dd>@Model.Company.Name</dd>
     <dt>Country</dt>
-    <dd></dd>
+    <dd>@Model.Company.CountryCode</dd>
     <dt>Website</dt>
-    <dd></dd>
+    <dd>@Model.Company.Website</dd>
 </dl>
 <h2>Subsidiaries</h2>
 <ul>
+    @foreach (var item in Model.Company?.Children)
+    {
+        <li>@item.Name</li>
+    }
 </ul>
 <h2>Games</h2>
 <ul>
+    @foreach (var item in Model.Company?.DevelopedGames)
+    {
+        <li>@item.Name</li>
+    }
 </ul>
 
 
+<ul>
+    @foreach (var item in Model.Company?.ReleasedGames)
+    {
+        <li>@item.Name</li>
+    }
+</ul>

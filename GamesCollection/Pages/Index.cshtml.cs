@@ -14,22 +14,21 @@ namespace GamesCollection.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly GameCompanyService gs;
+        private readonly GameCompanyService _gs;
 
-        public IList<Company> Companies { get; set; }
-        public SelectList CountriesList { get; set; }
+        public IEnumerable<Company> Companies { get; set; }
+
+        public IEnumerable<SelectListItem> CountriesList { get; set; }
+
         public IndexModel(GameCompanyService gs)
         {
-            this.gs = gs;
+            this._gs = gs;
         }
 
-        public void OnGet(string order, string search, string nameFilter, string countryFilter, int? ownerFilter = null)
+        public void OnGet()
         {
-            CountriesList = new SelectList(new List<string> { 
-                "CZ", "FR", "GE", "PL", "SE", "US"
-            });
-            //IQueryable<Company> companies = _context.Companies;
-            Companies = new List<Company>();
+            CountriesList = _gs.GetCountryCodes().Select(item => new SelectListItem(item, item));
+            Companies = _gs.GetCompanies();  
         }
     }
 }

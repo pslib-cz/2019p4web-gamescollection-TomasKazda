@@ -12,10 +12,13 @@ namespace GamesCollection.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [Display(Name = "název společnosti")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "webová stránka")]
         public string Website { get; set; }
         [Required]
+        [Display(Name = "kód země")]
         public string CountryCode { get; set; }
         
         [ForeignKey("Parent")]
