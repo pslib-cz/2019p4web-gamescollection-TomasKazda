@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GamesCollection.Models;
 using GamesCollection.Service;
+using GamesCollection.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,6 +16,18 @@ namespace GamesCollection.Pages
     public class IndexModel : PageModel
     {
         private readonly GameCompanyService _gs;
+
+        [BindProperty(SupportsGet = true)]
+        public string NameFilter { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string CountryCodeFilter { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public OrderByState OrderBy { get; set; }
+
+        public OrderByState OrderByName { get; set; }
+        public OrderByState OrderByCC { get; set; }
 
         public IEnumerable<Company> Companies { get; set; }
 

@@ -16,14 +16,22 @@
 </ul>
 
 <form asp-page="./Index" method="get" class="form-inline">
-
+    
 </form>
 
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(x => x.Companies.FirstOrDefault().Name)</th>
-            <th>@Html.DisplayNameFor(x => x.Companies.FirstOrDefault().CountryCode)</th>
+            <th>
+                <a asp-route-OrderBy="@Model.OrderByName" asp-route-NameFilter="@Model.NameFilter">
+                    @Html.DisplayNameFor(x => x.Companies.FirstOrDefault().Name)
+                </a>
+            </th>
+            <th>
+                <a asp-route-OrderBy="@Model.OrderByCC">
+                    @Html.DisplayNameFor(x => x.Companies.FirstOrDefault().CountryCode)
+                </a>
+            </th>   
             <th>@Html.DisplayNameFor(x => x.Companies.FirstOrDefault().Website)</th>
             <th>&nbsp;</th>
         </tr>
