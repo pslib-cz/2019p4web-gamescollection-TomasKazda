@@ -41,7 +41,10 @@ namespace GamesCollection.Pages
         public void OnGet()
         {
             CountriesList = _gs.GetCountryCodes().Select(item => new SelectListItem(item, item));
-            Companies = _gs.GetCompanies();  
+            Companies = _gs.GetCompanies();
+
+            var data = this.HttpContext.User.FindFirst((ct) => ct.Type == System.Security.Claims.ClaimTypes.NameIdentifier);
+
         }
     }
 }

@@ -7,9 +7,11 @@ using GamesCollection.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GamesCollection.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GamesCollection
 {
+    
     public class DetailsModel : PageModel
     {
         private readonly GameCompanyService _gs;

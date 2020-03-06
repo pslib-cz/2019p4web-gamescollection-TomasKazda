@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace GamesCollection.Service
 {
     public class GameCompanyService
     {
         readonly ApplicationDbContext _db;
+        readonly HttpContext _httpContext;
 
-        public GameCompanyService(ApplicationDbContext db)
+        public GameCompanyService(ApplicationDbContext db, IHttpContextAccessor contextAccessor)
         {
             _db = db;
+            _httpContext = contextAccessor.HttpContext;
         }
 
         public IEnumerable<string> GetCountryCodes()
