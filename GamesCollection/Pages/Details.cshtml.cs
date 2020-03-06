@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GamesCollection
 {
-    
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly GameCompanyService _gs;
